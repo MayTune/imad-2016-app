@@ -43,8 +43,8 @@ var articles=
             </p> `
 },
     'article-three':{
-     title:'Article-two',
-    heading:'Article-two',
+     title:'Article-three',
+    heading:'Article-three',
     date:'Sept 22,2016',
     content:` <p>
                 Hi there, I am Maytune 
