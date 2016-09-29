@@ -113,7 +113,12 @@ app.get('/:articleName',function(req,res){
     var articleName=req.params.articleName;
    res.send(createTemplate(articles[articleName]));
 });
+var coumter=0;
 
+app.get('/coumter',function(req,res){
+    counter=counter+1;
+    res.send(coumter.toString);
+});
 
 
 app.get('/ui/style.css', function (req, res) {
