@@ -6,9 +6,9 @@ button.onclick=function(){
         if(request.readystate===XMLHttpRequest.DONE){
             if(request.status===200)
             {
-               var counter=request.responseText; 
+               var counter=JSON.parse(request.responseText); 
                var span=document.getElementById("count");
-    span.innerHTML=counter.toString();
+    span.innerHTML=counter.title;
             }
         }
     };
