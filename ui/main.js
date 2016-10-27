@@ -8,7 +8,7 @@ button.onclick=function(){
             {
                var counter=JSON.parse(request.responseText); 
                var span=document.getElementById("count");
-    span.innerHTML=counter.title;
+    span.innerHTML=counter.toString();
             }
         }
     };
