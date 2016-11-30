@@ -29,7 +29,7 @@ submit.onclick=function(){
 };
 
 
-/*var button=document.getElementById("click");
+var button=document.getElementById("click");
 button.onclick=function(){
     
     var request=new XMLHttpRequest();
@@ -46,4 +46,4 @@ button.onclick=function(){
   
     request.open('GET','http://maytune.imad.hasura-app.io/counter',true);
     request.send(null);
-};*/
+};
