@@ -12,8 +12,13 @@ var path = require('path');
 var app = express();
 var crypto=require('crypto');
 var bodyParser=require('body-parser');
+var session=require('express-session');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret:'Random',
+    cookie:{maxAge: 1000*60*60*24*30}
+}));
 function createTemplate(data){
     var title=data.title;
     var date=data.date;
@@ -99,6 +104,7 @@ app.post('/login',function(req,res){
                var hashedPassword=hash(password,salt);
                if(hashedPassword==dbString)
                {
+                   req.session.outh={userId:result.rows[0].id};
                    res.send('Credentials correct');
                }
                else
@@ -109,6 +115,17 @@ app.post('/login',function(req,res){
            }
     });
 });
+app.get('/check-login',function(req,res){
+   if(req.session&&req.session.outh&&req.session.outh.userId){
+       res.send('You are successfully logged in'+req.session.outh.userId.toString());
+   } 
+   else
+   {
+       res.send('You are not logged in');
+   }
+});
+
+
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
     pool.query('SELECT * FROM TEST',function(err,result){
