@@ -11,7 +11,7 @@ var morgan = require('morgan');
 var path = require('path');
 var app = express();
 var crypto=require('crypto');
-var bodyParse=require('body-parser');
+var bodyParser=require('body-parser');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 function createTemplate(data){
