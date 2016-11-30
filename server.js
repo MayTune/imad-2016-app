@@ -1,7 +1,15 @@
+var Pool=require('pg').Pool;
+var config= {
+    user : 'maytune',
+    database : 'maytune',
+    host: 'db.imad,hasura-app.io',
+    port:'5432',
+    password:DB_PASSWORD
+};
+
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-
 var app = express();
 app.use(morgan('combined'));
 
@@ -104,6 +112,11 @@ function createTemplate(data){
     ;
     return htmlTemplate;
 }
+}
+
+app.get('/test-db',function(req,res){
+    
+});
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
