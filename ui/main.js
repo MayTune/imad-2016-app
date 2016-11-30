@@ -12,7 +12,7 @@ submit.onclick=function(){
             {
                 alert('Username/Password incorrect');
             }
-            else if(request.status===500)
+            else 
             {
                 alert('Something went wrong on the server');
             }
