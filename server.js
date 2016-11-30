@@ -81,6 +81,35 @@ app.post('/create-user',function(req,res){
        }
     });
 });
+app.post('/login',function(req,res){
+     var username=req.body.username;
+    var password=req.body.password;
+    var dbString=hash(password,salt);
+    pool.query('SELECT * FROM  "User" WHERE username=$1'[username],function(err,result){
+        if(err){
+           res.status(500).send(err.toString());
+       } 
+       else{
+           if(result.rows.length===0)
+           {
+               res.send(403).send("User not found");
+           }
+           else{
+               var dbString=result.rows[0].password;
+               var salt=dbString.split('$1')[2];
+               var hashedPassword=hash(password,salt);
+               if(hashedPassword==dbString)
+               {
+                   res.send('Credentials correct');
+               }
+               else
+               {
+                   res.send(403).send('Username/Password incorrect');
+               }
+           }
+           }
+    });
+});
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
     pool.query('SELECT * FROM TEST',function(err,result){
