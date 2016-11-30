@@ -112,7 +112,7 @@ function createTemplate(data){
     ;
     return htmlTemplate;
 }
-}
+
 
 app.get('/test-db',function(req,res){
     
