@@ -4,9 +4,8 @@ var config= {
     database : 'maytune',
     host: 'db.imad,hasura-app.io',
     port:'5432',
-    password:DB_PASSWORD
+    password:process.env.DB_PASSWORD
 };
-
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
@@ -113,9 +112,16 @@ function createTemplate(data){
     return htmlTemplate;
 }
 
-
+var pool = new Pool(config);
 app.get('/test-db',function(req,res){
-    
+    Pool.query('SELECT * FROM TEST',function(err,res){
+       if(err){
+           res.status(500).send(err.toString());
+       } 
+       else{
+           res.send(JSON.stringify(result));
+       }
+    });
 });
 
 app.get('/', function (req, res) {
