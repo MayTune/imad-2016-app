@@ -109,14 +109,11 @@ function loadLoginForm () {
     };
 }
 
-/*function loadLoggedInUser (username) {
+function loadLoggedInUser (username) {
     var loginArea = document.getElementById('login_area');
-    loginArea.innerHTML = `
-        <h3> Hi <i>${username}</i></h3>
-        <a href="/logout">Logout</a>
-    `;
+    loginArea.innerHTML = `<h3> Hi <i>${username}</i></h3><a href="/logout">Logout</a>`;
 }
-*/
+
 function loadLogin () {
     // Check if the user is already logged in
     var request = new XMLHttpRequest();
@@ -165,7 +162,7 @@ function loadLogin () {
 loadLogin();
 
 // Now this is something that we could have directly done on the server-side using templating too!
-loadArticles();
+//loadArticles();
 /*var button=document.getElementById("click");
 button.onclick=function(){
     
