@@ -13,6 +13,9 @@ body {
     width: 50%;
     border: 3px solid green;
     padding: 10px;
+     font-size:20px;
+    color:purple;
+     text-align: center;
 }
 
 .text-big {
@@ -35,9 +38,4 @@ body {
     padding-top: 80px;
     padding-left: 20px;
     padding-right: 20px;
-}
-.intro{
-    font-size:20px;
-    color:purple;
-     text-align: center;
 }
